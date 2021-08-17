@@ -1,4 +1,4 @@
-# FHook
+# Hook
 Simple x86 hooking library (not finished)
 # Usage
 ```cpp
