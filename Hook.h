@@ -1,9 +1,5 @@
-#include <cstdint>
-#include <memoryapi.h>
 #include <Windows.h>
 #include <iostream>
-#include <cstring>
-#include <cstddef>
 
 class hook
 {
