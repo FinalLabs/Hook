@@ -13,6 +13,7 @@ private:
 public:
     class utils
     {
+    public:
         template<typename T1>
         static std::uintptr_t aslr(const T1 address)
         {
