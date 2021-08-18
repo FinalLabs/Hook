@@ -10,7 +10,7 @@ public:
     class utils
     {
     public:
-        template<typename T1>
+       template<typename T1>
        static const std::uintptr_t aslr(const T1 address)
         {
             return (address - 0x400000 + reinterpret_cast<std::uintptr_t>(GetModuleHandleA(0)));
