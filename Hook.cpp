@@ -44,16 +44,16 @@ void hook::store_bytes(BYTE* adr, int size)
     hook_storage = storage;
 }
 
-void hook::detour_function(BYTE* adr, const std::uint32_t func, std::size_t size, hook::mode m)
+void hook::detour_function(BYTE* adr, const std::uint32_t func, std::size_t size, bool mode) 
 {
-    switch (m)
+    switch (mode)
     {
-    case hook::mode::create:
+    case 1:
     {
         hook::add_jmp(adr, func, size);
         break;
     }
-    case hook::mode::remove:
+    case 0:
     {
         hook::remove_jmp(adr, func, size);
         break;
