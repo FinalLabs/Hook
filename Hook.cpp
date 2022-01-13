@@ -7,14 +7,14 @@ void Hook::placeJMP(BYTE* adr, std::uint32_t func, std::size_t size)
 {
     VirtualProtect(reinterpret_cast<void*>(adr), size, PAGE_EXECUTE_READWRITE, &old);
     *adr = 0xE9;
-    *reinterpret_cast<std::uintptr_t*>((reinterpret_cast<std::uintptr_t>(adr + 1))) = (static_cast<std::uint32_t>(func) - reinterpret_cast<std::uint32_t>(adr)) - 5;
+    *reinterpret_cast<std::uintptr_t*>((reinterpret_cast<std::uintptr_t>(adr + 1))) = (static_cast<std::uint32_t>(func) - reinterpret_cast<std::uint32_t>(adr)) - size;
     VirtualProtect(reinterpret_cast<void*>(adr), size, old, &old);
 }
 
 void Hook::removeJMP(BYTE* adr, std::uint32_t func, std::size_t size)
 {
     VirtualProtect(reinterpret_cast<void*>(adr), size, PAGE_EXECUTE_READWRITE, &old);
-    std::memcpy(reinterpret_cast<void*>(adr), hookStorage, 5);
+    std::memcpy(reinterpret_cast<void*>(adr), hookStorage, size);
     VirtualProtect(reinterpret_cast<void*>(adr), size, old, &old);
 }
 
