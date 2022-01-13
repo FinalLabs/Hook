@@ -1,16 +1,11 @@
 #include <Windows.h>
 #include <iostream>
 
-class hook
+class Hook
 {
-public:
-    struct hstorage
-    {
-        BYTE* bytes;
-    };
 private:
-    static BYTE* hook_storage;
-    static DWORD old;
+    static BYTE* hookStorage;
+    static unsigned long old;
 public:
     class utils
     {
@@ -22,9 +17,9 @@ public:
         }
     };
 private:
-    static int add_jmp(BYTE* adr, const std::uint32_t func, std::size_t size);
-    static int remove_jmp(BYTE* adr, const std::uint32_t func, std::size_t size);
+    static void placeJMP(BYTE* adr, std::uint32_t func, std::size_t size);
+    static void removeJMP(BYTE* adr, std::uint32_t func, std::size_t size);
 public:
-    static void store_bytes(BYTE* adr, int size);
-    static void detour_function(BYTE* adr, const std::uint32_t func, std::size_t size, bool mode);
+    static void storeBytes(BYTE* adr, std::size_t size);
+    static void detourFunction(BYTE* adr, std::uint32_t func, std::size_t size, bool mode);
 };
