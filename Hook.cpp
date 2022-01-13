@@ -42,3 +42,5 @@ void Hook::detourFunction(BYTE* adr, std::uint32_t func, std::size_t size, bool 
     }
     }
 }
+
+/* Adding more soon :-) */
