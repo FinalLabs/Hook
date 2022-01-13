@@ -19,6 +19,7 @@ int main()
 To detour a function is also simple, but to restore the jmp you have to store bytes first as addressed above
 ```cpp
 Hook::detourFunction(address, detour_function, size, mode);
+```
 ```cpp
 int myDetour()
 {
