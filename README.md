@@ -1,18 +1,15 @@
-# Hook
+# About
 Simple x86 hooking library (not finished)
 # Usage
+To store bytes of a function is simple
 ```cpp
-std::uint32_t Detour()
-{
-    return 1;
-}
-
 int main()
 {
-    std::uintptr_t address = hook::aslr(0x6342B0);
-    hook::store_bytes(reinterpret_cast<BYTE*>(address), 5); //store the bytes 
+    std::uintptr_t memoryAddress = Hook::utils::aslr(0xDEADBEEF);
+    std::size_t memoryAddressSize = 5;
 
-    hook::detour_function(reinterpret_cast<BYTE*>(address), reinterpret_cast<std::uint32_t>(Detour), 5, hook::mode::create);
-    hook::detour_function(reinterpret_cast<BYTE*>(address), reinterpret_cast<std::uint32_t>(Detour), 5, hook::mode::remove);
+    Hook::storeBytes(reinterpret_cast<BYTE*>(memoryAddress), memoryAddressSize);
+    
+    return false;
 }
 ```
