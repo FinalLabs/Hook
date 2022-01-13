@@ -1,7 +1,8 @@
 # About
 Simple x86 hooking library (not finished)
-# Usage
+# Documentation
 To store bytes of a function is simple
+## Usage
 ```cpp
 Hook::storeBytes(address, size);
 ```
@@ -18,6 +19,7 @@ int main()
 }
 ```
 To detour a function is also simple, but to restore the jmp you have to store bytes first as addressed above
+## Usage
 ```cpp
 Hook::detourFunction(address, detour_function, size, mode);
 ```
