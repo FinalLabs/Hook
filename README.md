@@ -5,6 +5,7 @@ To store bytes of a function is simple
 ```cpp
 Hook::storeBytes(address, size);
 ```
+## How to use
 ```cpp
 int main()
 {
@@ -20,6 +21,7 @@ To detour a function is also simple, but to restore the jmp you have to store by
 ```cpp
 Hook::detourFunction(address, detour_function, size, mode);
 ```
+## How to use
 ```cpp
 int myDetour()
 {
@@ -44,3 +46,5 @@ int main()
     return 0;
 }
 ```
+Also supports multiple detours at once!
+```cpp
