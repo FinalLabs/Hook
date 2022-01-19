@@ -19,7 +19,6 @@ int main()
     return 0;
 }
 ```
-```
 ## Usage
 To detour a function is simple, but to restore the jmp you have to store bytes first as addressed above
 ```cpp
