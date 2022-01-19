@@ -3,7 +3,7 @@
 BYTE* Hook::hookStorage;
 DWORD Hook::old;
 
-void Hook::placeJMP(BYTE* adr, std::uint32_t func, std::size_t size)
+void Hook::placeJMP(unsigned char* adr, std::uint32_t func, std::size_t size)
 {
     VirtualProtect(reinterpret_cast<void*>(adr), size, PAGE_EXECUTE_READWRITE, &old);
     *adr = 0xE9;
@@ -11,14 +11,14 @@ void Hook::placeJMP(BYTE* adr, std::uint32_t func, std::size_t size)
     VirtualProtect(reinterpret_cast<void*>(adr), size, old, &old);
 }
 
-void Hook::removeJMP(BYTE* adr, std::uint32_t func, std::size_t size)
+void Hook::removeJMP(unsigned char* adr, std::uint32_t func, std::size_t size)
 {
     VirtualProtect(reinterpret_cast<void*>(adr), size, PAGE_EXECUTE_READWRITE, &old);
     std::memcpy(reinterpret_cast<void*>(adr), hookStorage, size);
     VirtualProtect(reinterpret_cast<void*>(adr), size, old, &old);
 }
 
-void Hook::storeBytes(BYTE* adr, std::size_t size)
+void Hook::storeBytes(unsigned char* adr, std::size_t size)
 {
     BYTE* storage = new BYTE[size - 1];
     for (int i = 0; i <= size - 1; i++)
@@ -26,7 +26,7 @@ void Hook::storeBytes(BYTE* adr, std::size_t size)
     hookStorage = storage;
 }
 
-void Hook::detourFunction(BYTE* adr, std::uint32_t func, std::size_t size, bool mode)
+void Hook::detourFunction(unsigned char* adr, std::uint32_t func, std::size_t size, bool mode)
 {
     switch (mode)
     {
