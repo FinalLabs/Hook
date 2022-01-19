@@ -20,22 +20,22 @@ void Hook::removeJMP(unsigned char* adr, std::uint32_t func, std::size_t size)
 
 void Hook::storeBytes(unsigned char* adr, std::size_t size)
 {
-    BYTE* storage = new BYTE[size - 1];
+    unsigned char* storage = new unsigned char[size - 1];
     for (int i = 0; i <= size - 1; i++)
-        storage[i] = *reinterpret_cast<BYTE*>(adr + i);
+        storage[i] = *reinterpret_cast<unsigned char*>(adr + i);
     hookStorage = storage;
 }
 
-void Hook::detourFunction(unsigned char* adr, std::uint32_t func, std::size_t size, bool mode)
+void Hook::detourFunction(unsigned char* adr, std::uint32_t func, std::size_t size, Mode mode)
 {
     switch (mode)
     {
-    case true:
+    case Mode::CREATE_DETOUR:
     {
         Hook::placeJMP(adr, func, size);
         break;
     }
-    case false:
+    case Mode::REMOVE_DETOUR:
     {
         Hook::removeJMP(adr, func, size);
         break;
