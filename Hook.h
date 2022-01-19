@@ -3,6 +3,12 @@
 
 class Hook
 {
+public:
+    enum class Mode : bool
+    {
+        REMOVE_DETOUR,
+        CREATE_DETOUR
+    };
 private:
     static unsigned char* hookStorage;
     static unsigned long old;
@@ -21,5 +27,5 @@ private:
     static void removeJMP(unsigned char* adr, std::uint32_t func, std::size_t size);
 public:
     static void storeBytes(unsigned char* adr, std::size_t size);
-    static void detourFunction(unsigned char* adr, std::uint32_t func, std::size_t size, bool mode);
+    static void detourFunction(unsigned char* adr, std::uint32_t func, std::size_t size, Mode mode);
 };
