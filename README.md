@@ -19,6 +19,7 @@ int main()
     return 0;
 }
 ```
+```
 ## Usage
 To detour a function is simple, but to restore the jmp you have to store bytes first as addressed above
 ```cpp
@@ -42,10 +43,10 @@ int main()
     h->storeBytes(reinterpret_cast<BYTE*>(memoryAddress), memoryAddressSize);
     
     /* To create a detour */
-    h->detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, true); 
+    h->detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::CREATE_DETOUR); 
     
     /* Remove the detour (just change true to false at the end) */
-    h->detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, false); 
+    h->detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::REMOVE_DETOUR); 
     
     return 0;
 }
