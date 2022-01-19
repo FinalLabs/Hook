@@ -1,7 +1,7 @@
 #include "Hook.h"
 
-BYTE* Hook::hookStorage;
-DWORD Hook::old;
+unsigned char* Hook::hookStorage;
+unsigned long Hook::old;
 
 void Hook::placeJMP(unsigned char* adr, std::uint32_t func, std::size_t size)
 {
