@@ -17,9 +17,9 @@ public:
         }
     };
 private:
-    static void placeJMP(BYTE* adr, std::uint32_t func, std::size_t size);
-    static void removeJMP(BYTE* adr, std::uint32_t func, std::size_t size);
+    static void placeJMP(unsigned char* adr, std::uint32_t func, std::size_t size);
+    static void removeJMP(unsigned char* adr, std::uint32_t func, std::size_t size);
 public:
-    static void storeBytes(BYTE* adr, std::size_t size);
-    static void detourFunction(BYTE* adr, std::uint32_t func, std::size_t size, bool mode);
+    static void storeBytes(unsigned char* adr, std::size_t size);
+    static void detourFunction(unsigned char* adr, std::uint32_t func, std::size_t size, bool mode);
 };
