@@ -4,7 +4,7 @@
 class Hook
 {
 private:
-    static BYTE* hookStorage;
+    static unsigned char* hookStorage;
     static unsigned long old;
 public:
     class utils
