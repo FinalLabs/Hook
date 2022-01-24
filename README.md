@@ -10,11 +10,11 @@ storeBytes(address, size);
 ```cpp
 int main()
 {
-    Hook* h = new Hook();
+    Hook* h;
     std::uintptr_t memoryAddress = Hook::utils::aslr(0xDEADBEEF);
     std::size_t memoryAddressSize = 5;
 
-    h->storeBytes(reinterpret_cast<BYTE*>(memoryAddress), memoryAddressSize);
+    h.storeBytes(reinterpret_cast<BYTE*>(memoryAddress), memoryAddressSize);
     
     return 0;
 }
@@ -35,17 +35,17 @@ int myDetour()
 
 int main()
 {
-    Hook* h = new Hook();
+    Hook h;
     std::uintptr_t memoryAddress = Hook::utils::aslr(0xDEADBEEF);
     std::size_t memoryAddressSize = 5;
 
-    h->storeBytes(reinterpret_cast<BYTE*>(memoryAddress), memoryAddressSize);
+    h.storeBytes(reinterpret_cast<BYTE*>(memoryAddress), memoryAddressSize);
     
     /* To create a detour */
-    h->detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::CREATE_DETOUR); 
+    h.detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::CREATE_DETOUR); 
     
     /* Remove the detour (just change true to false at the end) */
-    h->detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::REMOVE_DETOUR); 
+    h.detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::REMOVE_DETOUR); 
     
     return 0;
 }
