@@ -10,7 +10,7 @@ storeBytes(address, size);
 ```cpp
 int main()
 {
-    Hook* h;
+    Hook h;
     std::uintptr_t memoryAddress = Hook::utils::aslr(0xDEADBEEF);
     std::size_t memoryAddressSize = 5;
 
