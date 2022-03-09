@@ -44,7 +44,7 @@ int main()
     /* To create a detour */
     h.detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::CREATE_DETOUR); 
     
-    /* Remove the detour (just change true to false at the end) */
+    /* Remove the detour */
     h.detourFunction(reinterpret_cast<BYTE*>(memoryAddress), reinterpret_cast<std::uint32_t>(myDetour), memoryAddressSize, Hook::Mode::REMOVE_DETOUR); 
     
     return 0;
